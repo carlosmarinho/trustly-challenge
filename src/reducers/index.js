@@ -3,4 +3,4 @@ import ProductReducer from './productReducer';
 
 export default combineReducers({
     ProductReducer
-})
+});
