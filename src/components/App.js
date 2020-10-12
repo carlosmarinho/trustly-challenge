@@ -9,7 +9,6 @@ const Checkout = () => <div>Checkout do produto</div>;
 const App = () => {
     return(
         <BrowserRouter>
-            <Header />
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/checkout" exact component={Checkout} />
