@@ -1,3 +1,5 @@
+import { FETCH_ALL_PRODUCTS } from 'actions/types';
+
 const initialState = {
     products: [],
     product: {}
@@ -5,7 +7,7 @@ const initialState = {
 
 export default (state=initialState, action) => {
     switch(action.type) {
-        case 'FETCH_ALL_PRODUCTS':
+        case FETCH_ALL_PRODUCTS:
             return {
                 ...state,
                 products: action.payload
