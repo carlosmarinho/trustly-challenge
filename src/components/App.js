@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from 'pages/home'
-import Header from './header';
+import Header from './Header';
 
 const Checkout = () => <div>Checkout do produto</div>;
 
