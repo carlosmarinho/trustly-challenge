@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PageLayout from 'components/PageLayout'
+import { SearchBar } from 'components/common';
+
 
 import { fetchAllProducts } from 'actions/product';
 import product from 'json/product';
@@ -17,6 +19,7 @@ const Home = () => {
 
     return(
         <PageLayout>
+            <SearchBar />            
             <div>Minha listagem de produtos</div>
             <ul>
                 {products.map(product => 

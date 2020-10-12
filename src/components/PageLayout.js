@@ -7,6 +7,10 @@ const Content = styled.main`
     margin: 80px auto 0 auto;
     padding: 0 16px;
     box-sizing: border-box;
+
+    @media(min-width: 600px) {
+        margin: 107px auto 0 auto;
+    }
 `
 
 const PageLayout = ({children}) => {
