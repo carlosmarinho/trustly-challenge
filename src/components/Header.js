@@ -35,10 +35,17 @@ const NavigationText = styled.div`
     font-weight: bolder;
 `
 
-const Header = () => {
+const PageName = styled.h2`
+    margin: auto auto auto auto;
+    font-weight: bolder;
+    font-size: 1.6rem;
+`
+
+const Header = ({pageName, backButton}) => {
     return(
         <HeaderWrapper>
-            <NavigationText>Back</NavigationText>
+            <NavigationText>{backButton}</NavigationText>
+            <PageName>{ pageName }</PageName>
             <UserIcon />
         </HeaderWrapper>
     )

@@ -17,10 +17,10 @@ const Content = styled.main`
     }
 `
 
-const PageLayout = ({children}) => {
+const PageLayout = ({children, pageName}) => {
     return(
         <>
-            <Header />
+            <Header pageName={pageName} />
             <Content>
                 {children}
             </Content>

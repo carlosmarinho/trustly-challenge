@@ -38,7 +38,7 @@ const Home = () => {
     console.log("productreducer: ", products);
 
     return(
-        <PageLayout>
+        <PageLayout pageName="Sneakers">
             <SearchBar />        
             <ProductContainer>                
                 {products.map(product => 
