@@ -1,6 +1,6 @@
 import api from 'api/index';
-import { FETCH_ALL_PRODUCTS } from 'actions/types';
-import products from 'json/product';
+import { FETCH_ALL_PRODUCTS, FETCH_PRODUCT } from 'actions/types';
+import arProducts from 'json/product';
 
 export const fetchAllProducts = () => async dispatch => {
     // const response = await api.get('/sneakers/index.json');
@@ -12,7 +12,7 @@ export const fetchAllProducts = () => async dispatch => {
     //     console.log("errorrrrr: ", e)
     // }
 
-    const response = products;
+    const response = arProducts;
     
     dispatch({
         type: FETCH_ALL_PRODUCTS,
@@ -20,12 +20,20 @@ export const fetchAllProducts = () => async dispatch => {
     })
 }
 
-export const fetchProductById = (id) => async dispatch => {
- 
-    const response = products;
+export const fetchProductById = (id) => async (dispatch, getState) => {
+    const { productReducer:{ products } } = getState();
+
+    let response;
+    if(products) 
+        response = products;
+    else
+        response = arProducts;
+
+    const product = response.filter(product => product.id === id)
+
     
     dispatch({
-        type: FETCH_ALL_PRODUCTS,
-        payload: response.results
+        type: FETCH_PRODUCT,
+        payload: product
     })
 }

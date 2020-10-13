@@ -1,4 +1,4 @@
-import { FETCH_ALL_PRODUCTS } from 'actions/types';
+import { FETCH_ALL_PRODUCTS, FETCH_PRODUCT } from 'actions/types';
 
 const initialState = {
     products: [],
@@ -11,6 +11,11 @@ export default (state=initialState, action) => {
             return {
                 ...state,
                 products: action.payload
+            };
+        case FETCH_PRODUCT:
+            return {
+                ...state,
+                product: action.payload
             };
         default:
             return state;

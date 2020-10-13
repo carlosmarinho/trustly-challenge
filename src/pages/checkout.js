@@ -9,7 +9,7 @@ import { fetchProductById } from 'actions/product';
 
 const Checkout = () => {
     const { id } = useParams();
-    const { productReducer: { products } } = useSelector(state => state)
+    const { productReducer: { product } } = useSelector(state => state)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const Checkout = () => {
 
     return(
         <PageLayout pageName="Checkout" backButton="Back">
-                    
+            {/* <Checkout product={product} /> */}
         </PageLayout>
     )
 }
