@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 
 import Home from 'pages/home'
+import Checkout from 'pages/checkout';
 
 const GlobalStyle = createGlobalStyle`
     body{
@@ -15,7 +16,6 @@ const GlobalStyle = createGlobalStyle`
     }
 `
 
-const Checkout = () => <div>Checkout do produto</div>;
 
 const App = () => {
     return(
@@ -24,7 +24,7 @@ const App = () => {
             <BrowserRouter>
                 <Switch>
                     <Route path="/" exact component={Home} />
-                    <Route path="/checkout" exact component={Checkout} />
+                    <Route path="/checkout/:id" exact component={Checkout} />
                 </Switch>
             </BrowserRouter>
         </>

@@ -19,3 +19,13 @@ export const fetchAllProducts = () => async dispatch => {
         payload: response.results
     })
 }
+
+export const fetchProductById = (id) => async dispatch => {
+ 
+    const response = products;
+    
+    dispatch({
+        type: FETCH_ALL_PRODUCTS,
+        payload: response.results
+    })
+}
