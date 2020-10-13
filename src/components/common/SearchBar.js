@@ -7,19 +7,20 @@ const Search = styled.div`
     height: 30px;
     display: flex;
     box-sizing: border-box;
-    margin: 10px 10px 30px 10px;
+    margin: 10px 10px 50px 10px;
     align-items: center;
 
-    >img{
+    img{
         width: 20px;
         height: 20px;
         margin-left: 20px;
     
     }
 
-    >input {
+    input {
         height: 27px;
         text-align: center;
+        font-size: 24px
     }
 
 `

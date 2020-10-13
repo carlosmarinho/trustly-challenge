@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Button } from './Button'
 
 const ProductWrapper = styled.div`
     width: 100%;
@@ -25,6 +26,11 @@ const ProductWrapper = styled.div`
     input{
         margin-bottom: 10px;
     }
+
+    .add-to-cart{
+        width: 100%;
+        height: 60px   
+    }
 `
 
 export const Product = ({thumbnailURL, description, value, size, qty}) => {
@@ -37,10 +43,11 @@ export const Product = ({thumbnailURL, description, value, size, qty}) => {
                 Quantity <select />
             </div>
             <div>{value}</div>
-            <input 
-                value="Add to cart" 
-                type="button"
-            />
+            <div class="add-to-cart">
+                <Button>
+                    Add to cart
+                </Button>
+            </div>
         </ProductWrapper>
     )
 }
