@@ -9,7 +9,7 @@ const HeaderWrapper = styled.div`
     position: fixed;
     top: 0;
     
-    @media(min-width: 600px){
+    @media(min-width: 400px){
         background-color: #f6f6f6;
         height: 87px;
     }
@@ -22,7 +22,7 @@ const UserIcon = styled.div`
     background-color: #ccc;
     margin: auto 20px auto auto;
 
-    @media(min-width: 600px){
+    @media(min-width: 400px){
         background-color: white;
         width: 35px;
         height: 35px;
