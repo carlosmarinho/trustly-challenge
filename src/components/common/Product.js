@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const ProductWrapper = styled.div`
     width: 100%;
     text-align: center;
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.05);
 
     img{
         width: 100%;
@@ -14,6 +15,15 @@ const ProductWrapper = styled.div`
 
     h3{
         text-align: center;
+        font-weight: normal;
+    }
+
+    div{
+        margin-top: 20px;
+    }
+
+    input{
+        margin-bottom: 10px;
     }
 `
 
@@ -27,7 +37,10 @@ export const Product = ({thumbnailURL, description, value, size, qty}) => {
                 Quantity <select />
             </div>
             <div>{value}</div>
-            <input value="Add to cart" />
+            <input 
+                value="Add to cart" 
+                type="button"
+            />
         </ProductWrapper>
     )
 }

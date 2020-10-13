@@ -12,7 +12,7 @@ const ProductContainer = styled.section`
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     
-    grid-gap: .5rem; 
+    grid-gap: 2rem; 
 
     @media(min-width: 600px) {
         grid-template-columns: repeat(3, 1fr);
