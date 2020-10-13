@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import PageLayout from 'components/PageLayout'
-import { SearchBar } from 'components/common';
+import { SearchBar, Checkout as CheckoutWrapper } from 'components/common';
 
 import { fetchProductById } from 'actions/product';
 
@@ -17,8 +17,8 @@ const Checkout = () => {
     },[])
 
     return(
-        <PageLayout pageName="Checkout" backButton="Back">
-            {/* <Checkout product={product} /> */}
+        <PageLayout pageName="Checkout" backButton="Back" large>
+            <CheckoutWrapper {...product} />
         </PageLayout>
     )
 }

@@ -22,16 +22,15 @@ export const fetchAllProducts = () => async dispatch => {
 
 export const fetchProductById = (id) => async (dispatch, getState) => {
     const { productReducer:{ products } } = getState();
-
+    
     let response;
-    if(products) 
+    if(!products) 
         response = products;
     else
-        response = arProducts;
-
-    const product = response.filter(product => product.id === id)
-
-    
+        response = arProducts.results;
+        
+    const product = response.filter(product => product.id === id)[0]
+        
     dispatch({
         type: FETCH_PRODUCT,
         payload: product
