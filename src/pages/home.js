@@ -1,11 +1,31 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import styled from 'styled-components';
 import PageLayout from 'components/PageLayout'
-import { SearchBar } from 'components/common';
+import { SearchBar, Product } from 'components/common';
 
 
 import { fetchAllProducts } from 'actions/product';
 import product from 'json/product';
+
+const ProductContainer = styled.section`
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    
+    grid-gap: .5rem; 
+
+    @media(min-width: 600px) {
+        grid-template-columns: repeat(3, 1fr);
+    
+    }
+
+    /* div{
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    } */
+`
 
 const Home = () => {
     const { productReducer: { products } } = useSelector(state => state)
@@ -19,13 +39,12 @@ const Home = () => {
 
     return(
         <PageLayout>
-            <SearchBar />            
-            <div>Minha listagem de produtos</div>
-            <ul>
+            <SearchBar />        
+            <ProductContainer>                
                 {products.map(product => 
-                    <li>{product.description}</li>
+                    <div><Product {...product} /></div>
                 )}
-            </ul>
+            </ProductContainer>    
         </PageLayout>
     )
 }
