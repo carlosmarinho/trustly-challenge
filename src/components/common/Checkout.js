@@ -16,24 +16,67 @@ const CheckoutContent = styled.div`
     background: #F7F7F7;
     border-radius: 10.8766px;
     width: 100%;
+    min-width: 400px;
 
     div{
         display: flex;
-        width: 100%;
-        margin: 0 30px 0 30px;
+        width: 90%;
+        margin: 0 5% 0 5%;
     }
 
     div.top-checkout{
         margin-top: 20px;
     }
 
-    div div {
+
+    .cart-total {
         display: block;
         margin: initial;
     }
 
+    .cart-total p{
+        margin-left: 5px;
+    }
+
+    .cart-total h4{
+        margin-left: 5px;
+        line-height: 10px;
+        margin-bottom: 0px;
+    }
+
+    .delivery-details {
+        display: block;
+        margin: initial;
+    }
+
+    .total-cost{
+        display: flex;
+        margin: initial;
+    }
+
+    .total-cost div{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        margin: initial;
+    }
+
+    .total-cost div h4{
+        margin: 0;
+    }
+
+    .total-cost div p{
+        margin: 10px 0 0 0;
+    }
+
     h3 {
         margin-top: 10px;
+        font-weight: normal;
+    }
+    
+    p {
+        color: #A5A5A5;
+        line-height:10px;
     }
     
 `
@@ -45,18 +88,18 @@ export const Checkout = ({ maxresURL, description, id, price }) => {
             <img src={maxresURL} />
             <CheckoutContent>
                 <div class="top-checkout">
-                    <div>
+                    <div class="cart-total">
                         <h3>Cart Total</h3>
-                        <p><strong>{description}</strong></p>
+                        <h4>{description}</h4>
                         <p>x 1 Green Size 41 Item #2839u512401</p>
                         <p>Item #{id}</p>
                     </div>
-                    <div>
+                    <div class="delivery-details">
                         <h3>Delivery Details</h3>
                         <p>John Smith</p>
                         <p>Phone no: 01312428200</p>
                         <p>Address: Redwood City, 2000. </p>
-                        <div>
+                        <div class="total-cost">
                             <div>
                                 <h4>Total cost</h4>
                                 <p>Delivery included</p>
@@ -67,6 +110,10 @@ export const Checkout = ({ maxresURL, description, id, price }) => {
                 </div>
                 <div class="paymentMethod">
                     <h3>Select your payment method</h3>
+                    <div>
+
+                    </div>
+                    
                 </div>
             </CheckoutContent>
         </CheckoutWrapper>
