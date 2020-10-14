@@ -4,12 +4,27 @@ import styled from 'styled-components';
 const Content = styled.div`
     width: 60%;
 
+    p {
+        color: #A5A5A5;
+        line-height:13px;
+        margin: 5px 5px 0px 0px;
+        font-size: 13px;
+    }
+
+    .cart-total{
+        margin-bottom: 20px; 
+    }
+
     @media(min-width: 400px) {
 
         margin-left: 20px;
-        background: #F7F7F7;
-        border-radius: 10.8766px;
-        width: 100%;
+        
+        
+        /* width: 60%; */
+        
+        p{
+            line-height: 10px;
+        }
         
         /* div{
             display: flex;
@@ -42,35 +57,14 @@ const Content = styled.div`
             margin: initial;
         }
     
-        .total-cost{
-            display: flex;
-            margin: initial;
-        }
-    
-        .total-cost div{
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            margin: initial;
-        }
-    
-        .total-cost div h4{
-            margin: 0;
-        }
-    
-        .total-cost div p{
-            margin: 10px 0 0 0;
-        }
+        
     
         h3 {
             margin-top: 10px;
             font-weight: normal;
         }
         
-        p {
-            color: #A5A5A5;
-            line-height:10px;
-        } */
+         */
     }
 
     
@@ -84,21 +78,14 @@ export const CheckoutContent = ({ description, id, price }) => {
                 <div class="cart-total">
                     <h3>Cart Total</h3>
                     <h4>{description}</h4>
-                    <p>x 1 Green Size 41 Item #2839u512401</p>
+                    <p>x 1 Green Size 41</p>
                     <p>Item #{id}</p>
                 </div>
                 <div class="delivery-details">
-                    <h3>Delivery Details</h3>
+                    <h4>Delivery Details</h4>
                     <p>John Smith</p>
                     <p>Phone no: 01312428200</p>
                     <p>Address: Redwood City, 2000. </p>
-                    <div class="total-cost">
-                        <div>
-                            <h4>Total cost</h4>
-                            <p>Delivery included</p>
-                        </div>
-                        <div>{price}</div>
-                    </div>
                 </div>
             </div>
         </Content>
