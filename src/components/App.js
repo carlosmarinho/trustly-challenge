@@ -9,8 +9,9 @@ const GlobalStyle = createGlobalStyle`
     body{
         margin: 0;
         font-size: 14px;
+        font-family: 'Open Sans';
 
-        @media(min-width: 600px) {
+        @media(min-width: 400px) {
             font-size: 16px;
         }
     }

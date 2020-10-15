@@ -7,7 +7,11 @@ const PaymentMethodWrapper = styled.div`
     background: #F7F7F7;
     border-radius: 9.02222px;
     padding: 20px;
+    color: #565656;
     
+    @media(min-width: 400px) {
+        width: 100%;
+    }
     
 `
 
@@ -30,6 +34,30 @@ const FirstWrapper = styled.div`
         margin-right: 40px;
         text-align: center;
     }
+
+    @media(min-width: 400px) {
+        flex-direction: column-reverse;
+        margin-top: 0px;
+        padding-top: 0px;
+        
+        
+        
+    }
+`
+
+const FirstWrapperDouble = styled(FirstWrapper)`
+    @media(min-width: 400px) {
+        justify-content: flex-end;
+    
+        span {
+            margin-top: -5px;
+            margin-bottom: 10px;
+            font-size: 10px;
+            max-width: 70px;
+        }
+    }
+
+    
 `
     
 const SecondWrapper = styled.div`
@@ -55,10 +83,10 @@ export const PaymentMethod = (props) => {
     return (
         <PaymentMethodWrapper>
             <TypePaymentWrapper>
-                <FirstWrapper>
+                <FirstWrapperDouble>
                     <p>Online Banking</p>
                     <span>Save $10</span>
-                </FirstWrapper>
+                </FirstWrapperDouble>
                 <SecondWrapper>
                     <div class="bandeiras">
                         <img src="/images/bandeiras-bancos.png" alt="bandeiras do online banking" />

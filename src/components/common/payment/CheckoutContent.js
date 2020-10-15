@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PaymentMethod } from './PaymentMethod';
+import { Button } from '../Button'
 
 const Content = styled.div`
     width: 60%;
@@ -17,46 +19,40 @@ const Content = styled.div`
 
     @media(min-width: 400px) {
 
-        margin-left: 20px;
-        
-        
-        /* width: 60%; */
+        margin-left: 0px;
+        width: 60%;
         
         p{
-            line-height: 10px;
+            line-height: 14px;
         }
-        
-        /* div{
+
+        /* span {
+            margin-top: 5px;
+        } */
+
+        .top-checkout{
             display: flex;
-            width: 90%;
-            margin: 0 5% 0 5%;
+            width: 100%;
+            /* margin: 0px 20px 0 20px; */
+            background: #f7f7f7;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+            border-radius: 10px;
         }
-    
-        div.top-checkout{
-            margin-top: 20px;
-        }
-    
-    
+            
+        
         .cart-total {
-            display: block;
-            margin: initial;
+            width: 40%;
+            padding: 5%
+            /* margin: 30px; */
         }
     
-        .cart-total p{
-            margin-left: 5px;
-        }
-    
-        .cart-total h4{
-            margin-left: 5px;
-            line-height: 10px;
-            margin-bottom: 0px;
-        }
-    
+
         .delivery-details {
-            display: block;
-            margin: initial;
+            width: 40%;
+            padding: 5%
+            /* margin: 30px; */
         }
-    
         
     
         h3 {
@@ -64,15 +60,57 @@ const Content = styled.div`
             font-weight: normal;
         }
         
-         */
+        
     }
 
     
 `
+const TotalCostMobile = styled.div`
 
-export const CheckoutContent = ({ description, id, price }) => {
+    .total-cost-mobile{
+        width: 100%;
+        display: flex;
+        margin: 10px 20px 10px 20px;
+    }
+
+    .label-cost, .price{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        margin: initial;
+    }
+
+    .label-cost p {
+        color: #A5A5A5;
+        line-height:14px;
+        margin: 5px;
+    }
+
+    .price{
+        align-items: flex-end;
+        font-size: 36px;
+    } 
+
+
+    .total-cost-mobile div h4{
+        margin: 0;
+    }
+
+    .total-cost-mobile div p{
+        margin: 10px 0 0 0;
+    }
+
+    @media(min-width:400px) {
+        display: none;
+    }
+
+`
+
+
+export const CheckoutContent = ({ description, id, price, children }) => {
     
     return(
+        <>
         <Content>
             <div class="top-checkout">
                 <div class="cart-total">
@@ -86,8 +124,32 @@ export const CheckoutContent = ({ description, id, price }) => {
                     <p>John Smith</p>
                     <p>Phone no: 01312428200</p>
                     <p>Address: Redwood City, 2000. </p>
+                    <div class="total-cost">
+                        <div class="label-cost">
+                            <h4>Total cost</h4>
+                            <p>Delivery included</p>
+                        </div>
+                    <div class="price">${price}</div>
                 </div>
+                </div>
+                
+                <div class="payment-method">
+                    <h3>Select your payment method</h3>
+                    <PaymentMethod />
+                    
+                </div>    
             </div>
         </Content>
+        <TotalCostMobile >
+            <div class="total-cost-mobile">
+                <div class="label-cost">
+                    <h4>Total cost123</h4>
+                    <p>Delivery included</p>
+                </div>
+                <div class="price">${price}</div>
+            </div>
+        </TotalCostMobile>
+        
+        </>
     )
 }

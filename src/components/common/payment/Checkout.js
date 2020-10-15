@@ -14,6 +14,11 @@ const CheckoutWrapper = styled.div`
     border-radius: 10.8766px;
     padding: 15px 0 10px 10px;
 
+     
+    .total-cost{
+        display: none;
+    }
+
     h3{
         /* font-size: 16px; */
         display: none;
@@ -23,52 +28,81 @@ const CheckoutWrapper = styled.div`
         font-size: 16px;
         margin: initial;
     }
- 
-    .total-cost{
-        width: 100%;
-        display: flex;
-        margin: 10px 20px 10px 20px;
-    }
-
-    .label-cost, .price{
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        margin: initial;
-    }
-
-    .label-cost p {
-        color: #A5A5A5;
-        line-height:14px;
-        margin: 5px;
-    }
-
-    .price{
-        align-items: flex-end;
-        font-size: 36px;
-    }
-
-    .total-cost div h4{
-        margin: 0;
-    }
-
-    .total-cost div p{
-        margin: 10px 0 0 0;
-    }
 
     .payment-method{
         display: none;
     }
 
-
     @media(min-width: 400px) {
+        font-family: 'Open Sans';
+        max-width: 1000px;
+        background: initial;
+        flex-wrap: initial;
+        padding: initial;
+
         .payment-method{
             display: flex;
-            flex-direction: column;
+            width: 100%;
         }
 
-        .payment-method h3{
-            display: block;
+        .total-cost{
+            width: 100%;
+            display: flex;
+            margin: 30px 20px 10px 0px;
+        }
+
+        .label-cost, .price{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            margin: initial;
+        }
+
+        .label-cost p {
+            color: #A5A5A5;
+            line-height:14px;
+            margin: 5px;
+        }
+
+        .price{
+            align-items: flex-end;
+            font-size: 36px;
+        }
+
+        .total-cost div h4{
+            margin: 0;
+        }
+
+        .total-cost div p{
+            margin: 10px 0 0 0;
+        }
+
+    }
+
+`
+
+const CheckoutImg = styled.div`
+    width: 30%;
+    height: 100%;
+    margin-right: 15px;
+
+    
+    img{
+        width: 100%;
+        min-height: 110px;
+        border-radius:9px;
+    }
+
+    @media(min-width: 400px) {
+        width: 40%; 
+        min-height: 460px;
+        display: flex;
+        align-items: stretch;
+
+        img{
+            height: 100%;
+            min-height: 460px;
+
         }
     }
 
@@ -86,27 +120,6 @@ const PaymentMethodMobile = styled.div`
 
 `
 
-const CheckoutImg = styled.div`
-    width: 30%;
-    height: 100%;
-    margin-right: 15px;
-    
-    img{
-        width: 100%;
-        min-height: 110px;
-        border-radius:9px;
-    }
-
-    @media(min-width: 400px) {
-        width: 40%; 
-
-        img{
-            height: 100%;
-        }
-    }
-
-`
-
 
 export const Checkout = (props) => {
     const { price, maxresURL, pageName } = props;
@@ -118,19 +131,6 @@ export const Checkout = (props) => {
                     <img src={maxresURL} />
                 </CheckoutImg>
                 <CheckoutContent {...props} />
-                <div class="total-cost">
-                    <div class="label-cost">
-                        <h4>Total cost</h4>
-                        <p>Delivery included</p>
-                    </div>
-                    <div class="price">${price}</div>
-                </div>
-                <div class="payment-method">
-                    <h3>Select your payment method</h3>
-                    <div>
-
-                    </div>
-                </div>    
             </CheckoutWrapper>
             <PaymentMethodMobile>
                 <h3>Payment Method</h3>
