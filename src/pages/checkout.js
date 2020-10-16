@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import PageLayout from 'components/PageLayout'
-import { SearchBar, Checkout as CheckoutWrapper } from 'components/common';
+import { 
+    SearchBar, 
+    Checkout as CheckoutWrapper,
+    Breadcrumb
+} from 'components/common';
 
 import { fetchProductById } from 'actions/product';
 
@@ -18,6 +22,7 @@ const Checkout = () => {
 
     return(
         <PageLayout backButton="Back" large>
+            <Breadcrumb />
             <CheckoutWrapper {...product} pageName="Checkout"/>
         </PageLayout>
     )
