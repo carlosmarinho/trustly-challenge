@@ -101,7 +101,7 @@ const CheckoutImg = styled.div`
 
         img{
             height: 100%;
-            min-height: 460px;
+            min-height: 477px;
 
         }
     }

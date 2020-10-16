@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { TypePaymentWrapper } from './TypePaymentWrapper';
+import { Button } from '../Button';
+
 
 const PaymentMethodWrapper = styled.div`
+
 
     background: #F7F7F7;
     border-radius: 9.02222px;
@@ -78,6 +81,21 @@ const SecondWrapper = styled.div`
     } */
 `
 
+const ButtonWrapper = styled.div`
+    display: none;
+
+    @media(min-width: 400px) {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    Button{
+        margin: initial;
+        margin-top: 10px;
+        width: 250px;
+    }
+`
+
 export const PaymentMethod = (props) => {
     const { price, maxresURL } = props;
     return (
@@ -116,6 +134,9 @@ export const PaymentMethod = (props) => {
                     </div>
                 </SecondWrapper>
             </TypePaymentWrapper>
+            <ButtonWrapper >
+                <Button>Continue</Button>
+            </ButtonWrapper>
         </PaymentMethodWrapper>
         
     )

@@ -21,7 +21,7 @@ const Checkout = () => {
     },[])
 
     return(
-        <PageLayout backButton="Back" large>
+        <PageLayout backButton="Back" pageName="Checkout" large>
             <Breadcrumb />
             <CheckoutWrapper {...product} pageName="Checkout"/>
         </PageLayout>

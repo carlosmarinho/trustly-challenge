@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PaymentMethod } from './PaymentMethod';
-import { Button } from '../Button'
 
 const Content = styled.div`
     width: 60%;
@@ -14,7 +13,7 @@ const Content = styled.div`
     }
 
     .cart-total{
-        margin-bottom: 20px; 
+        /* margin-bottom: 20px;  */
     }
 
     @media(min-width: 400px) {
@@ -43,14 +42,14 @@ const Content = styled.div`
         
         .cart-total {
             width: 40%;
-            padding: 5%
+            padding: 5% 5% 0 5%
             /* margin: 30px; */
         }
     
 
         .delivery-details {
             width: 40%;
-            padding: 5%
+            padding: 5% 5% 0 5%
             /* margin: 30px; */
         }
         
