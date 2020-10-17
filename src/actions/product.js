@@ -56,11 +56,11 @@ export const fetchProductById = (id) => async (dispatch, getState) => {
     const { productReducer:{ products } } = getState();
     
     let response;
-    if(products) 
+    if(products.length) 
         response = products;
     else
         response = arProducts.results;
-        
+ 
     const product = response.filter(product => product.id === id)[0]
     dispatch({
         type: FETCH_PRODUCT,
