@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button } from '../Button';
+import { useSelector } from 'react-redux';
 
 import { CheckoutContent } from './CheckoutContent';
 import { PaymentMethod } from './PaymentMethod';
@@ -122,6 +123,9 @@ const PaymentMethodMobile = styled.div`
 
 
 export const Checkout = (props) => {
+    const [size, setSize] = useState();
+    const [quantity, setQuantity] = useState();
+    
     const { price, maxresURL, pageName } = props;
     return(
         <>

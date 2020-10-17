@@ -106,7 +106,7 @@ const TotalCostMobile = styled.div`
 `
 
 
-export const CheckoutContent = ({ description, id, price, children }) => {
+export const CheckoutContent = ({ color, size, quantity, description, id, price, children }) => {
     
     return(
         <>
@@ -115,7 +115,7 @@ export const CheckoutContent = ({ description, id, price, children }) => {
                 <div class="cart-total">
                     <h3>Cart Total</h3>
                     <h4>{description}</h4>
-                    <p>x 1 Green Size 41</p>
+                    <p>x {quantity ? quantity : '1'} {color} Size {size}</p>
                     <p>Item #{id}</p>
                 </div>
                 <div class="delivery-details">

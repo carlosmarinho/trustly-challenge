@@ -1,6 +1,16 @@
 import api from 'api/index';
-import { FETCH_ALL_PRODUCTS, FETCH_PRODUCT } from 'actions/types';
+import { FETCH_ALL_PRODUCTS, FETCH_PRODUCT, SET_PRODUCT_SIZE } from 'actions/types';
 import arProducts from 'json/product';
+
+export const setProductSize = (el) => async dispatch => {
+    
+    console.log('elelelllllll: ', el);
+
+    dispatch({
+        type: SET_PRODUCT_SIZE,
+        payload: {teste: 'teste'}
+    })
+}
 
 export const fetchAllProducts = () => async dispatch => {
     // const response = await api.get('/sneakers/index.json');

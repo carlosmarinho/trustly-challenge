@@ -35,14 +35,13 @@ const Home = () => {
         dispatch(fetchAllProducts());
     },[])
 
-    console.log("productreducer: ", products);
 
     return(
         <PageLayout pageName="Sneakers">
             <SearchBar />        
             <ProductContainer>                
                 {products.map(product => 
-                    <div><Product {...product} /></div>
+                    <div key={product.id}><Product {...product} /></div>
                 )}
             </ProductContainer>    
         </PageLayout>
