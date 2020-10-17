@@ -21,7 +21,7 @@ const Checkout = () => {
     },[])
 
     return(
-        <PageLayout backButton="Back" pageName="Checkout" large>
+        <PageLayout backButton={{text: 'Back', link: '/'}} pageName="Checkout" large>
             <Breadcrumb />
             <CheckoutWrapper {...product} pageName="Checkout"/>
         </PageLayout>

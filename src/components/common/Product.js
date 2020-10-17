@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from './Button'
+// import { Link } from 'react-router-dom';
+import { ButtonLink } from './ButtonLink'
 
 const ProductWrapper = styled.div`
     width: 100%;
@@ -33,7 +34,23 @@ const ProductWrapper = styled.div`
     }
 `
 
-export const Product = ({thumbnailURL, description, value, size, qty}) => {
+// const StyledLink = styled(Link)`
+//     color: white;
+//     background-color: #6B8067;
+//     border-radius: 4.5px;
+//     width: 80%;
+//     height: 40px;
+//     margin: auto 10% auto 10%;
+//     font-size: 14px;
+//     display: flex;
+//     text-decoration: none;
+//     align-items: center;
+//     justify-content: center;
+// `
+
+export const Product = ({thumbnailURL, description, value, id, size, qty}) => {
+    
+    
     return(
         <ProductWrapper >
             <img src={thumbnailURL} />
@@ -44,9 +61,7 @@ export const Product = ({thumbnailURL, description, value, size, qty}) => {
             </div>
             <div>{value}</div>
             <div class="add-to-cart">
-                <Button>
-                    Add to cart
-                </Button>
+                <ButtonLink to={`/checkout/${id}`} >Add to cart</ButtonLink>
             </div>
         </ProductWrapper>
     )

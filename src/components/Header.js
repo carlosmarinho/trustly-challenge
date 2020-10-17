@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeaderWrapper = styled.div`
     display: flex;
@@ -9,10 +10,16 @@ const HeaderWrapper = styled.div`
     position: fixed;
     top: 0;
     
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
     @media(min-width: 400px){
         background-color: #f6f6f6;
         height: 87px;
     }
+
 `
 
 const UserIcon = styled.div`
@@ -44,7 +51,9 @@ const PageName = styled.h2`
 const Header = ({pageName, backButton}) => {
     return(
         <HeaderWrapper>
-            <NavigationText>{backButton}</NavigationText>
+            <NavigationText>
+                <Link to={backButton.link}>{backButton.text}</Link>
+            </NavigationText>
             <PageName>{ pageName }</PageName>
             <UserIcon />
         </HeaderWrapper>

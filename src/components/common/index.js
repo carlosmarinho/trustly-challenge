@@ -5,4 +5,5 @@ export * from './Product';
 export * from './payment/Checkout';
 export * from './payment/CheckoutContent';
 export * from './Button';
+export * from './ButtonLink';
 export * from './Breadcrumb';
