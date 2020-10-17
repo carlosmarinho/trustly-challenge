@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { TypePaymentWrapper } from './TypePaymentWrapper';
 import { Button } from '../Button';
@@ -94,14 +95,43 @@ const ButtonWrapper = styled.div`
     }
 `
 
+const handlePayment = () => {
+    // console.log("window: ", window.PayWithMyBank);
+    window.PayWithMyBank.establish({
+        accessId: 'D61EC9BAF0BB369B9438',
+        merchantId: '1004314986',
+        metadata: { demo: 'enabled' },
+        currency: 'USD',
+        paymentType: 'Deferred',
+        amount: '100.00',
+        description: 'your@email.here',
+        merchantReference: '123456',
+        returnUrl: '#success',
+        cancelUrl: '#cancel'
+    });
+}
+
 export const PaymentMethod = (props) => {
     const [divSelected, setDivSelected] = useState();
     const { price, maxresURL } = props;
+    const history = useHistory();
 
     const handlePaymentMethod = (div) => {
-        console.log("vai mudar o div selected no paymentMethod: ", div);
+        // console.log("vai mudar o div selected no paymentMethod: ", div);
         setDivSelected(div)
     }
+
+    window.PayWithMyBank.addPanelListener(function(command, event) {
+        if (command === 'event' && event.type === 'new_location') {
+          if (event.data.indexOf('#success') === 0) {
+            // alert('success!', event.data);
+            history.push("/receipt");
+          } else {
+            // alert('cancel!');
+          }
+          return false;
+        }
+    });
 
     return (
         <PaymentMethodWrapper>
@@ -139,7 +169,7 @@ export const PaymentMethod = (props) => {
                 </SecondWrapper>
             </TypePaymentWrapper>
             <ButtonWrapper >
-                <Button>Continue</Button>
+                <Button onClick={handlePayment}>Continue</Button>
             </ButtonWrapper>
         </PaymentMethodWrapper>
         
