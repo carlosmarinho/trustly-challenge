@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TypePaymentWrapper } from './TypePaymentWrapper';
 import { Button } from '../Button';
 
 
 const PaymentMethodWrapper = styled.div`
-
-
     background: #F7F7F7;
     border-radius: 9.02222px;
     padding: 20px;
@@ -97,10 +95,17 @@ const ButtonWrapper = styled.div`
 `
 
 export const PaymentMethod = (props) => {
+    const [divSelected, setDivSelected] = useState();
     const { price, maxresURL } = props;
+
+    const handlePaymentMethod = (div) => {
+        console.log("vai mudar o div selected no paymentMethod: ", div);
+        setDivSelected(div)
+    }
+
     return (
         <PaymentMethodWrapper>
-            <TypePaymentWrapper>
+            <TypePaymentWrapper selected={divSelected==='first'} handleClick={() => handlePaymentMethod('first')}>
                 <FirstWrapperDouble>
                     <p>Online Banking</p>
                     <span>Save $10</span>
@@ -110,10 +115,9 @@ export const PaymentMethod = (props) => {
                         <img src="/images/bandeiras-bancos.png" alt="bandeiras do online banking" />
                     </div>
                 </SecondWrapper>    
+            </TypePaymentWrapper >
                 
-            </TypePaymentWrapper>
-                
-            <TypePaymentWrapper>
+            <TypePaymentWrapper selected={divSelected==='second'} handleClick={() => handlePaymentMethod('second')}>
                 <FirstWrapper>
                     <p>Card Payment</p>
                 </FirstWrapper>
@@ -124,7 +128,7 @@ export const PaymentMethod = (props) => {
                 </SecondWrapper>
             </TypePaymentWrapper>
             
-            <TypePaymentWrapper>
+            <TypePaymentWrapper selected={divSelected==='third'} handleClick={() => handlePaymentMethod('third')}>
                 <FirstWrapper>
                     <p>Apple Pay</p>
                 </FirstWrapper>
