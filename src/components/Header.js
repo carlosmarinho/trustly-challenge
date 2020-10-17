@@ -52,7 +52,13 @@ const Header = ({pageName, backButton}) => {
     return(
         <HeaderWrapper>
             <NavigationText>
-                <Link to={backButton.link}>{backButton.text}</Link>
+                <Link 
+                    to={backButton 
+                        ? backButton.link 
+                        : ""}
+                >
+                    {backButton ? backButton.text : ''}
+                </Link>
             </NavigationText>
             <PageName>{ pageName }</PageName>
             <UserIcon />

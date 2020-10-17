@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const BreadcrumbWrapper = styled.div`
     display: none;
@@ -32,6 +33,11 @@ const BarWrapper = styled.div`
 const BreadcrumbLabel = styled.p`
     margin-top: 10px;
     color: ${p => p.inactive ? '#BEBEBE' : 'initial'};
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
 `
 
 const Bar = styled.div`
@@ -61,7 +67,9 @@ export const Breadcrumb = () => {
                 <Point inactive/>
             </BarWrapper>
             <BarWrapper longer>
-                <BreadcrumbLabel>Cart</BreadcrumbLabel>
+                <BreadcrumbLabel>
+                    <Link to="/">Cart</Link>
+                </BreadcrumbLabel>
                 <BreadcrumbLabel>Payment Options</BreadcrumbLabel>
                 <BreadcrumbLabel inactive>Receipt</BreadcrumbLabel>
             </BarWrapper>
