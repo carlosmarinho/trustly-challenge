@@ -19,12 +19,6 @@ const ProductContainer = styled.section`
     
     }
 
-    /* div{
-        grid-row-start: 1;
-        grid-row-end: 3;
-        grid-column-start: 1;
-        grid-column-end: 3;
-    } */
 `
 
 const Home = () => {

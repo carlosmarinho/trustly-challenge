@@ -126,6 +126,8 @@ export const Checkout = (props) => {
     const [size, setSize] = useState();
     const [quantity, setQuantity] = useState();
     
+    console.log("prororororps: ", props);
+
     const { price, maxresURL, pageName } = props;
     return(
         <>

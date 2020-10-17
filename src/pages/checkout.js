@@ -20,6 +20,7 @@ const Checkout = () => {
         dispatch(fetchProductById(id));
     },[])
 
+
     return(
         <PageLayout backButton={{text: 'Back', link: '/'}} pageName="Checkout" large>
             <Breadcrumb />

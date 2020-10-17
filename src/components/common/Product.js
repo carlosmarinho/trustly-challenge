@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 // import { Link } from 'react-router-dom';
 import { ButtonLink } from './ButtonLink'
-import { setProductSize } from 'actions/product';
+import { setProductSize, setProductQty } from 'actions/product';
 
 
 const ProductWrapper = styled.div`
     width: 100%;
     text-align: center;
     box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.05);
+    color: #8d8d8d;
 
     img{
         width: 100%;
@@ -23,9 +24,9 @@ const ProductWrapper = styled.div`
         font-weight: normal;
     }
 
-    div{
+    /* div{
         margin-top: 20px;
-    }
+    } */
 
     input{
         margin-bottom: 10px;
@@ -33,7 +34,24 @@ const ProductWrapper = styled.div`
 
     .add-to-cart{
         width: 100%;
-        height: 60px   
+        height: 60px;
+    }
+
+    select {
+        border-radius: 4px;
+        border: 1px solid #8d8d8d;
+        color: #8d8d8d;
+    }
+
+    select:first-child {
+        margin-right: 10px;
+    }
+
+    p {
+        color: black;
+        font-size: 21px;
+        margin-top: 15px;
+        margin-bottom: 10px;
     }
 `
 
@@ -56,13 +74,12 @@ export const Product = ({
     description, 
     value, 
     id, 
+    price,
 }) => {
     const arQty = [...Array(10).keys()];
     const arSize = [38, 39, 40, 41, 42];
     const { productReducer } = useSelector(state => state)
     const dispatch = useDispatch();
-
-    console.log("propssssssssssssssa: ", productReducer);
     
     return(
         <ProductWrapper >
@@ -70,18 +87,21 @@ export const Product = ({
             <h3>{description}</h3>
             <div>
                 Size <select 
-                    onChange={e=>dispatch(setProductSize(e.target.value))}
+                    onChange={e=>dispatch(setProductSize(id, e.target.value))}
+                >
+                    <option key="0">---</option>
+                    {arSize.map(s => <option key={s}>{s}</option>)}
+                </select>
+                Quantity <select 
+                    onChange={e=>dispatch(setProductQty(id, e.target.value))}
                 >
                     <option>---</option>
-                    {arSize.map(s => <option>{s}</option>)}
+                    {arQty.map(q => <option key={q}>{q+1}</option>)}
                 </select>
-                Quantity <select >
-                    <option>---</option>
-                    {arQty.map(q => <option>{q+1}</option>)}
-                </select>
+                <p>$ {price}</p>
             </div>
             <div>{value}</div>
-            <div class="add-to-cart">
+            <div className="add-to-cart">
                 <ButtonLink to={`/checkout/${id}`} >Add to cart</ButtonLink>
             </div>
         </ProductWrapper>

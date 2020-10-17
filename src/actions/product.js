@@ -1,14 +1,36 @@
 import api from 'api/index';
-import { FETCH_ALL_PRODUCTS, FETCH_PRODUCT, SET_PRODUCT_SIZE } from 'actions/types';
+import { FETCH_ALL_PRODUCTS, FETCH_PRODUCT } from 'actions/types';
 import arProducts from 'json/product';
 
-export const setProductSize = (el) => async dispatch => {
+export const setProductSize = (id, el) => async (dispatch, getState) => {
     
-    console.log('elelelllllll: ', el);
+    let products = getState().productReducer.products;
+    products = products.map(p => {
+        if(p.id === id)
+        return {...p, size: el }
+
+        return p
+    })
 
     dispatch({
-        type: SET_PRODUCT_SIZE,
-        payload: {teste: 'teste'}
+        type: FETCH_ALL_PRODUCTS,
+        payload: products
+    })
+}
+
+export const setProductQty = (id, el) => async (dispatch, getState) => {
+    
+    let products = getState().productReducer.products;
+    products = products.map(p => {
+        if(p.id === id)
+        return {...p, quantity: el }
+
+        return p
+    })
+
+    dispatch({
+        type: FETCH_ALL_PRODUCTS,
+        payload: products
     })
 }
 
@@ -34,13 +56,12 @@ export const fetchProductById = (id) => async (dispatch, getState) => {
     const { productReducer:{ products } } = getState();
     
     let response;
-    if(!products) 
+    if(products) 
         response = products;
     else
         response = arProducts.results;
         
     const product = response.filter(product => product.id === id)[0]
-        
     dispatch({
         type: FETCH_PRODUCT,
         payload: product
