@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button } from './Button';
-import { useSelector } from 'react-redux';
-
 import { CheckoutContent } from './payment/CheckoutContent';
 import { PaymentMethod } from './payment/PaymentMethod';
+
+import { generateUid } from 'util/index';
 
 const CheckoutWrapper = styled.div`
     display: flex;
@@ -84,7 +84,7 @@ const CheckoutWrapper = styled.div`
 
 const PageName = styled.h2`
     margin: 0 0 5px 0;
-    padding-top: 10px;
+    
     @media(min-width: 400px) {
         display: none;
     }
@@ -134,6 +134,29 @@ export const Checkout = (props) => {
     const [size, setSize] = useState();
     const [quantity, setQuantity] = useState();
     
+    const handlePayment = ({price, description, id}) => {
+        const uid = generateUid();
+        
+        const obj = {
+            accessId: 'D61EC9BAF0BB369B9438',
+            merchantId: '1004314986',
+            metadata: { demo: 'enabled' },
+            currency: 'USD',
+            paymentType: 'Deferred',
+            amount: price,
+            description: `${description} - email: carluizfla@hotmail.com`,
+            merchantReference: uid,
+            returnUrl: '/receipt/success',
+            cancelUrl: '#cancel'
+        }
+        
+        // Não funcionou setar no reducer pois o sistema redireciona e ele perde o storage do reducer, 
+        // por isso irei usar o local storage
+        // dispatch(setProductMerchandReference(id, uid))
+        localStorage.setItem('merchantProduct', JSON.stringify({id: id, merchantReference: uid}))
+        window.PayWithMyBank.establish(obj);
+    }
+
 
     const { price, maxresURL, pageName } = props;
     return(
@@ -148,7 +171,7 @@ export const Checkout = (props) => {
             <PaymentMethodMobile>
                 <h3>Payment Method</h3>
                 <PaymentMethod />
-                <Button >Continue</Button>
+                <Button onClick={() => handlePayment(props)}>Continue</Button>
             </PaymentMethodMobile>
             
         </>

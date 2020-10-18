@@ -133,18 +133,18 @@ export const PaymentMethod = (props) => {
         setDivSelected(div)
     }
 
-    
-    // window.PayWithMyBank.addPanelListener(function(command, event) {
-    //     if (command === 'event' && event.type === 'new_location') {
-    //       if (event.data.indexOf('#success') === 0) {
-    //         // alert('success!', event.data);
-    //         history.push("/receipt");
-    //       } else {
-    //         // alert('cancel!');
-    //       }
-    //       return false;
-    //     }
-    // });
+
+    window.PayWithMyBank.addPanelListener(function(command, event) {
+        if (command === 'event' && event.type === 'new_location') {
+          if (event.data.indexOf('#success') === 0) {
+            // alert('success!', event.data);
+            history.push("/receipt");
+          } else {
+            // alert('cancel!');
+          }
+          return false;
+        }
+    });
 
     return (
         <PaymentMethodWrapper>

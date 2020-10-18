@@ -77,14 +77,17 @@ const Header = ({pageName, backButton}) => {
     return(
         <HeaderWrapper>
             <NavigationText>
-                <MenuLink 
-                    to={backButton 
-                        ? backButton.link 
-                        : ""}
-                >
-                    <img src="/images/arrow.png" />
-                    {backButton ? backButton.text : ''}
-                </MenuLink>
+                {
+                    backButton &&
+                    <MenuLink 
+                        to={backButton 
+                            ? backButton.link 
+                            : ""}
+                    >
+                        <img src="/images/arrow.png" />
+                        {backButton ? backButton.text : ''}
+                    </MenuLink>
+                }
             </NavigationText>
             <PageName>{ pageName }</PageName>
             <UserIcon >
