@@ -4,7 +4,7 @@ import Header from './Header';
 
 const Content = styled.main`
     max-width: ${p => p.large ? '1300px' : '1100px'};
-    margin: 70px auto 0 auto;
+    margin: 60px auto 0 auto;
     padding: 0 16px;
     box-sizing: border-box;
 
@@ -18,6 +18,8 @@ const Content = styled.main`
 `
 
 const PageLayout = ({children, pageName, backButton }) => {
+    console.log("pagename no layout: ", pageName);
+
     return(
         <>
             <Header pageName={pageName} backButton={backButton}/>

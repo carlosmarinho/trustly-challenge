@@ -4,6 +4,8 @@ import { createGlobalStyle } from 'styled-components';
 
 import Home from 'pages/home'
 import Checkout from 'pages/checkout';
+import Receipt from 'pages/receipt';
+
 
 const GlobalStyle = createGlobalStyle`
     body{
@@ -26,6 +28,7 @@ const App = () => {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/checkout/:id" exact component={Checkout} />
+                    <Route path="/receipt/:queryString" exact component={Receipt} />
                 </Switch>
             </BrowserRouter>
         </>

@@ -43,9 +43,14 @@ const NavigationText = styled.div`
 `
 
 const PageName = styled.h2`
-    margin: auto auto auto auto;
-    font-weight: bolder;
-    font-size: 1.6rem;
+    display: none;
+
+    @media(min-width:400px) {
+        display: block;
+        margin: auto auto auto auto;
+        font-weight: bolder;
+        font-size: 1.6rem;
+    }
 `
 
 const Header = ({pageName, backButton}) => {

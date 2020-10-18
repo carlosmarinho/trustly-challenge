@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button } from '../Button';
+import { Button } from './Button';
 import { useSelector } from 'react-redux';
 
-import { CheckoutContent } from './CheckoutContent';
-import { PaymentMethod } from './PaymentMethod';
+import { ReceiptContent } from './payment/ReceiptContent';
+import { PaymentMethod } from './payment/PaymentMethod';
 
-const CheckoutWrapper = styled.div`
+const ReceiptWrapper = styled.div`
     display: flex;
     box-sizing: border-box;
     /* height: 575px; */
@@ -82,7 +82,7 @@ const CheckoutWrapper = styled.div`
 
 `
 
-const CheckoutImg = styled.div`
+const ReceiptImg = styled.div`
     width: 30%;
     height: 100%;
     margin-right: 15px;
@@ -122,7 +122,7 @@ const PaymentMethodMobile = styled.div`
 `
 
 
-export const Checkout = (props) => {
+export const Receipt = (props) => {
     const [size, setSize] = useState();
     const [quantity, setQuantity] = useState();
     
@@ -131,12 +131,12 @@ export const Checkout = (props) => {
     return(
         <>
             {/* <h2>{pageName}</h2> */}
-            <CheckoutWrapper>
-                <CheckoutImg>
+            <ReceiptWrapper>
+                <ReceiptImg>
                     <img src={maxresURL} />
-                </CheckoutImg>
-                <CheckoutContent {...props} />
-            </CheckoutWrapper>
+                </ReceiptImg>
+                <ReceiptContent {...props} />
+            </ReceiptWrapper>
             <PaymentMethodMobile>
                 <h3>Payment Method</h3>
                 <PaymentMethod />
