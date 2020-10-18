@@ -104,7 +104,6 @@ export const PaymentMethod = (props) => {
     const [divSelected, setDivSelected] = useState();
     const dispatch = useDispatch();
     const { price, maxresURL } = props;
-    console.log("propssssss: ", props);
     const history = useHistory();
 
     const handlePayment = ({price, description, id}) => {
@@ -123,16 +122,17 @@ export const PaymentMethod = (props) => {
             cancelUrl: '#cancel'
         }
         
-        dispatch(setProductMerchandReference(id, uid))
+        // Não funcionou setar no reducer pois o sistema redireciona e ele perde o storage do reducer, 
+        // por isso irei usar o local storage
+        // dispatch(setProductMerchandReference(id, uid))
+        localStorage.setItem('merchantProduct', JSON.stringify({id: id, merchantReference: uid}))
         window.PayWithMyBank.establish(obj);
     }
 
     const handlePaymentMethod = (div) => {
-        // console.log("vai mudar o div selected no paymentMethod: ", div);
         setDivSelected(div)
     }
 
-    console.log("generated: ", generateUid());
 
     window.PayWithMyBank.addPanelListener(function(command, event) {
         if (command === 'event' && event.type === 'new_location') {

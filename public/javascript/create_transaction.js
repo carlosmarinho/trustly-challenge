@@ -1,4 +1,3 @@
-console.log("meu teste 1234");
 // PayWithMyBank.establish({
 //     accessId: 'D61EC9BAF0BB369B9438',
 //     merchantId: '1004314986',
@@ -11,4 +10,3 @@ console.log("meu teste 1234");
 //     returnUrl: '#success',
 //     cancelUrl: '#cancel'
 // });
-console.log("pay with my bank")

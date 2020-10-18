@@ -79,9 +79,6 @@ const ReceiptPaymentMethodMobile = styled.div`
 
 
 export const Receipt = (props) => {
-    const [size, setSize] = useState();
-    const [quantity, setQuantity] = useState();
-    
 
     const { price, maxresURL, pageName } = props;
     return(
@@ -89,7 +86,7 @@ export const Receipt = (props) => {
             <PageName>{pageName}</PageName>
             <ReceiptWrapper>
                 <h3>Order Summary</h3>
-                <div class="wrapper">
+                <div className="wrapper">
                     <ReceiptImg>
                         <img src={maxresURL} />
                     </ReceiptImg>
@@ -97,7 +94,7 @@ export const Receipt = (props) => {
                 </div>
             </ReceiptWrapper>
             <ReceiptPaymentMethodMobile>
-                <ReceiptPaymentMethod />
+                <ReceiptPaymentMethod {...props} />
                 <Button >Place Order</Button>
             </ReceiptPaymentMethodMobile>
             

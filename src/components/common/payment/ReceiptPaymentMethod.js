@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
 import { Button } from '../Button';
 
@@ -74,11 +73,8 @@ const TotalCost = styled.div`
 `
 
 export const ReceiptPaymentMethod = (props) => {
-    const dispatch = useDispatch();
     const { price, maxresURL } = props;
-
-
-
+    
     return (
         <ReceiptPaymentMethodWrapper>
             <h3>Payment Method</h3>
@@ -90,7 +86,7 @@ export const ReceiptPaymentMethod = (props) => {
                     <p>Delivery Included</p>
                 </div>
                 <div>
-                    <span>$100{price}</span>
+                    <span>${price}</span>
                 </div>
             </TotalCost>
             <ButtonWrapper >

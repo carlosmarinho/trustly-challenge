@@ -13,13 +13,12 @@ import { fetchProductById } from 'actions/product';
 
 const Checkout = () => {
     const { id } = useParams();
-    const { productReducer: { product } } = useSelector(state => state)
+    const { productReducer: { product, products } } = useSelector(state => state)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(fetchProductById(id));
     },[])
-
 
     return(
         <PageLayout backButton={{text: 'Back', link: '/'}} pageName="Checkout" large>

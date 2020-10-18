@@ -42,7 +42,7 @@ export const ReceiptContent = (props) => {
     quantity = quantity ? quantity : 1;
     return(
         <Content>
-                <div class="cart-total">
+                <div className="cart-total">
                     <h4>{description}</h4>
                     <p>x {quantity} {color} Size {size}</p>
                     <p>Item #{id}</p>

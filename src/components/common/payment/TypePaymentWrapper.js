@@ -17,8 +17,6 @@ const TypePayment = styled.div`
 
 
 export const TypePaymentWrapper = ({ children, selected, handleClick }) => {
-
-    console.log("selected no type payment: ", selected)
     
     return (
         <TypePayment selected={selected} onClick={() => handleClick()}>

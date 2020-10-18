@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
+import queryString from 'querystring';
 import PageLayout from 'components/PageLayout'
 import { 
     Receipt as ReceiptWrapper,
@@ -10,17 +11,24 @@ import {
 import { fetchProductById } from 'actions/product';
 
 const Receipt = () => {
-    const { id } = useParams();
-    const { productReducer: { product } } = useSelector(state => state)
-    const dispatch = useDispatch()
+    const location = useLocation();
+    const parsed = queryString.parse(location.search);
+    const localProduct = localStorage.getItem('merchantProduct')
+    const id = localProduct ? JSON.parse(localProduct).id : null; 
+    const { productReducer: { product, products } } = useSelector(state => state)
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
-        dispatch(fetchProductById(id));
+        if(id) {
+            dispatch(fetchProductById(id));
+        }
+        // dispatch(fetchAllProducts());
+
     },[])
 
-
     return(
-        <PageLayout backButton={{text: 'Back', link: `/content/${id}`}} pageName="Review and Confirmation" large>
+        <PageLayout backButton={{text: 'Back', link: `/content/`}} pageName="Review and Confirmation" large>
             <Breadcrumb />
             <ReceiptWrapper {...product} pageName="Review and Confirmation"/>
         </PageLayout>

@@ -108,7 +108,6 @@ const TotalCostMobile = styled.div`
 export const CheckoutContent = (props) => {
     let { color, size, quantity, description, id, price, children } = props;
     quantity = quantity ? quantity : 1;
-    console.log("quantity: ", quantity);
     return(
         <>
         <Content>

@@ -2,8 +2,7 @@ import api from 'api/index';
 import { FETCH_ALL_PRODUCTS, FETCH_PRODUCT } from 'actions/types';
 import arProducts from 'json/product';
 
-export const setProductMerchandReference = (id, el) => async (dispatch, getState) => {
-    
+export const setProductMerchandReference = (id, el) => async (dispatch, getState) => {  
     let products = getState().productReducer.products;
     products = products.map(p => {
         if(p.id === id)
@@ -20,7 +19,6 @@ export const setProductMerchandReference = (id, el) => async (dispatch, getState
 
 
 export const setProductSize = (id, el) => async (dispatch, getState) => {
-    
     let products = getState().productReducer.products;
     products = products.map(p => {
         if(p.id === id)
@@ -79,6 +77,22 @@ export const fetchProductById = (id) => async (dispatch, getState) => {
         response = arProducts.results;
  
     const product = response.filter(product => product.id === id)[0]
+    dispatch({
+        type: FETCH_PRODUCT,
+        payload: product
+    })
+}
+
+export const fetchProductByMerchantReference = (merchantReference) => async (dispatch, getState) => {
+    const { productReducer:{ products } } = getState();
+    
+    let response;
+    if(products.length) 
+        response = products;
+    else
+        response = arProducts.results;
+ 
+    const product = response.filter(product => product.merchantReference === merchantReference)[0]
     dispatch({
         type: FETCH_PRODUCT,
         payload: product

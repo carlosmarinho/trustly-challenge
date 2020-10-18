@@ -18,8 +18,6 @@ const Content = styled.main`
 `
 
 const PageLayout = ({children, pageName, backButton }) => {
-    console.log("pagename no layout: ", pageName);
-
     return(
         <>
             <Header pageName={pageName} backButton={backButton}/>
