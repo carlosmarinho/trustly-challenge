@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { TypePaymentWrapper } from './TypePaymentWrapper';
 import { Button } from '../Button';
 import { generateUid } from 'util/index';
+import { setProductMerchandReference } from 'actions/product';
 
 const PaymentMethodWrapper = styled.div`
     background: #F7F7F7;
@@ -96,28 +98,34 @@ const ButtonWrapper = styled.div`
     }
 `
 
-const handlePayment = ({price, description}) => {
-    const obj = {
-        accessId: 'D61EC9BAF0BB369B9438',
-        merchantId: '1004314986',
-        metadata: { demo: 'enabled' },
-        currency: 'USD',
-        paymentType: 'Deferred',
-        amount: price,
-        description: `${description} - email: carluizfla@hotmail.com`,
-        merchantReference: generateUid(),
-        returnUrl: '#success',
-        cancelUrl: '#cancel'
-    }
-    console.log("obj: ", obj)
-    window.PayWithMyBank.establish(obj);
-}
+
 
 export const PaymentMethod = (props) => {
     const [divSelected, setDivSelected] = useState();
+    const dispatch = useDispatch();
     const { price, maxresURL } = props;
     console.log("propssssss: ", props);
     const history = useHistory();
+
+    const handlePayment = ({price, description, id}) => {
+        const uid = generateUid();
+        
+        const obj = {
+            accessId: 'D61EC9BAF0BB369B9438',
+            merchantId: '1004314986',
+            metadata: { demo: 'enabled' },
+            currency: 'USD',
+            paymentType: 'Deferred',
+            amount: price,
+            description: `${description} - email: carluizfla@hotmail.com`,
+            merchantReference: uid,
+            returnUrl: '#success',
+            cancelUrl: '#cancel'
+        }
+        
+        dispatch(setProductMerchandReference(id, uid))
+        window.PayWithMyBank.establish(obj);
+    }
 
     const handlePaymentMethod = (div) => {
         // console.log("vai mudar o div selected no paymentMethod: ", div);
