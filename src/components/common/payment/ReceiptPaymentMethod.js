@@ -25,7 +25,7 @@ const ReceiptPaymentMethodWrapper = styled.div`
     }
     
     @media(min-width: 400px) {
-        width: 100%;
+        width: 100%
     }
     
 `
