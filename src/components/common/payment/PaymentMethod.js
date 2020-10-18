@@ -92,6 +92,7 @@ const ButtonWrapper = styled.div`
         margin: initial;
         margin-top: 10px;
         width: 250px;
+        cursor: pointer;
     }
 `
 
