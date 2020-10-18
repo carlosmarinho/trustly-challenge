@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { TypePaymentWrapper } from './TypePaymentWrapper';
 import { Button } from '../Button';
-
+import { generateUid } from 'util/index';
 
 const PaymentMethodWrapper = styled.div`
     background: #F7F7F7;
@@ -95,31 +95,35 @@ const ButtonWrapper = styled.div`
     }
 `
 
-const handlePayment = () => {
-    // console.log("window: ", window.PayWithMyBank);
-    window.PayWithMyBank.establish({
+const handlePayment = ({price, description}) => {
+    const obj = {
         accessId: 'D61EC9BAF0BB369B9438',
         merchantId: '1004314986',
         metadata: { demo: 'enabled' },
         currency: 'USD',
         paymentType: 'Deferred',
-        amount: '100.00',
-        description: 'your@email.here',
-        merchantReference: '123456',
+        amount: price,
+        description: `${description} - email: carluizfla@hotmail.com`,
+        merchantReference: generateUid(),
         returnUrl: '#success',
         cancelUrl: '#cancel'
-    });
+    }
+    console.log("obj: ", obj)
+    window.PayWithMyBank.establish(obj);
 }
 
 export const PaymentMethod = (props) => {
     const [divSelected, setDivSelected] = useState();
     const { price, maxresURL } = props;
+    console.log("propssssss: ", props);
     const history = useHistory();
 
     const handlePaymentMethod = (div) => {
         // console.log("vai mudar o div selected no paymentMethod: ", div);
         setDivSelected(div)
     }
+
+    console.log("generated: ", generateUid());
 
     window.PayWithMyBank.addPanelListener(function(command, event) {
         if (command === 'event' && event.type === 'new_location') {
@@ -169,7 +173,7 @@ export const PaymentMethod = (props) => {
                 </SecondWrapper>
             </TypePaymentWrapper>
             <ButtonWrapper >
-                <Button onClick={handlePayment}>Continue</Button>
+                <Button onClick={() => handlePayment(props)}>Continue</Button>
             </ButtonWrapper>
         </PaymentMethodWrapper>
         

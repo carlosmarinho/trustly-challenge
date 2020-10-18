@@ -105,7 +105,8 @@ const TotalCostMobile = styled.div`
 
 `
 
-export const CheckoutContent = ({ color, size, quantity, description, id, price, children }) => {
+export const CheckoutContent = (props) => {
+    let { color, size, quantity, description, id, price, children } = props;
     quantity = quantity ? quantity : 1;
     console.log("quantity: ", quantity);
     return(
@@ -134,8 +135,7 @@ export const CheckoutContent = ({ color, size, quantity, description, id, price,
                 
                 <div class="payment-method">
                     <h3>Select your payment method</h3>
-                    <PaymentMethod />
-                    
+                    <PaymentMethod {...props} />
                 </div>    
             </div>
         </Content>
