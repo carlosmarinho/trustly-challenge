@@ -1,4 +1,5 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -56,22 +57,49 @@ const Point = styled.div`
     border-radius: 15px;
 `
 
-export const Breadcrumb = () => {
+
+
+export const Breadcrumb = ({page}) => {
+
+    const { productReducer: {product}} = useSelector(state=>state);
+    
+    const showBreadcrumbReceipt = (page, el) => {
+        console.log("pppaaaaage:::: ", page);
+        if(page==='receipt' ) {
+            if(el === 'point') {
+                return (
+                    <Link to={`/checkout/${product.id}`}>{el==='point' ? <Point /> : 'Receipt'}</Link>
+                )
+            }
+            else {
+                return <BreadcrumbLabel><Link to={`/checkout/${product.id}`}>Payment Options</Link></BreadcrumbLabel>
+            }
+        }
+        else {
+            if(el === 'point') {
+                return <Point />
+            }
+            else {
+                return "Payment Options";
+            }
+        }
+    }
+
     return(
         <BreadcrumbWrapper>
             <BarWrapper>
-                <Point />
+                <Link to="/"><Point /></Link>
                 <Bar/>
-                <Point />
+                {showBreadcrumbReceipt(page, 'point')}
                 <Bar />
-                <Point inactive/>
+                <Point inactive={page !== 'receipt'}/>
             </BarWrapper>
             <BarWrapper longer>
                 <BreadcrumbLabel>
                     <Link to="/">Cart</Link>
                 </BreadcrumbLabel>
-                <BreadcrumbLabel>Payment Options</BreadcrumbLabel>
-                <BreadcrumbLabel inactive>Receipt</BreadcrumbLabel>
+                {showBreadcrumbReceipt(page)}
+                <BreadcrumbLabel inactive={page !== 'receipt'}>Receipt</BreadcrumbLabel>
             </BarWrapper>
         </BreadcrumbWrapper>
     )

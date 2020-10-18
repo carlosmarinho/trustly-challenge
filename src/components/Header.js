@@ -53,20 +53,43 @@ const PageName = styled.h2`
     }
 `
 
+const MenuLink = styled(Link)`
+    padding: 5px 15px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+
+    img{
+        margin-right: 10px;
+        width: 14px;
+        height: 14px;
+    }
+
+    @media(min-width:400px) {
+        font-size:20px;
+    }
+
+`
+
 const Header = ({pageName, backButton}) => {
     return(
         <HeaderWrapper>
             <NavigationText>
-                <Link 
+                <MenuLink 
                     to={backButton 
                         ? backButton.link 
                         : ""}
                 >
+                    <img src="/images/arrow.png" />
                     {backButton ? backButton.text : ''}
-                </Link>
+                </MenuLink>
             </NavigationText>
             <PageName>{ pageName }</PageName>
-            <UserIcon />
+            <UserIcon >
+                <img src="/images/avatar.png" alt=""/>
+            </UserIcon>
         </HeaderWrapper>
     )
 }

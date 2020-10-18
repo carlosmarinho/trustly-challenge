@@ -16,6 +16,10 @@ const Content = styled.div`
         /* margin-bottom: 20px;  */
     }
 
+    .delivery-details{
+        margin-top: 10px;
+    }
+
     @media(min-width: 400px) {
 
         margin-left: 0px;
@@ -49,8 +53,9 @@ const Content = styled.div`
 
         .delivery-details {
             width: 40%;
-            padding: 5% 5% 0 5%
+            padding: 5% 5% 0 5%;
             /* margin: 30px; */
+            margin-top: 0px;
         }
         
     

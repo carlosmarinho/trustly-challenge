@@ -10,11 +10,9 @@ const TypePayment = styled.div`
     border-radius: 9px;
     box-sizing: border-box;
     justify-content: center;
-    border: ${p => p.selected ? '2px solid #63B55C' : '0'};
-    
+    border: ${p => p.selected ? '2px solid #63B55C' : '0'};  
 
 `
-
 
 export const TypePaymentWrapper = ({ children, selected, handleClick }) => {
     

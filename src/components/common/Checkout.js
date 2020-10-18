@@ -84,7 +84,7 @@ const CheckoutWrapper = styled.div`
 
 const PageName = styled.h2`
     margin: 0 0 5px 0;
-
+    padding-top: 10px;
     @media(min-width: 400px) {
         display: none;
     }

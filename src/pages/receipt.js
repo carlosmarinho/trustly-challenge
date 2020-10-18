@@ -28,8 +28,8 @@ const Receipt = () => {
     },[])
 
     return(
-        <PageLayout backButton={{text: 'Back', link: `/content/`}} pageName="Review and Confirmation" large>
-            <Breadcrumb />
+        <PageLayout backButton={{text: 'Back', link: `/checkout/${product.id}`}} pageName="Review and Confirmation" large>
+            <Breadcrumb page="receipt"/>
             <ReceiptWrapper {...product} pageName="Review and Confirmation"/>
         </PageLayout>
     )
