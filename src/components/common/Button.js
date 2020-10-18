@@ -5,12 +5,17 @@ const Button = styled.button`
     color: white;
     background-color: #6B8067;
     border-radius: 4.5px;
-    width: 80%;
+    width: 100%;
+    margin-top: 10px;
     height: 40px;
     display: block;
     white-space: none;
     border-style: none;
-    margin: 10px 10% 10px 10%;
+    
+    @media(min-width: 400px) {
+        margin: 10px 10% 10px 10%;
+        width: 80%;
+    }
 
     &:disabled{
         background: #eee;

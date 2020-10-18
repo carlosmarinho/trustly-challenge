@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PageLayout from 'components/PageLayout'
 import { 
-    Checkout as CheckoutWrapper,
+    Receipt as ReceiptWrapper,
     Breadcrumb
 } from 'components/common';
 
 import { fetchProductById } from 'actions/product';
 
-const Checkout = () => {
+const Receipt = () => {
     const { id } = useParams();
     const { productReducer: { product } } = useSelector(state => state)
     const dispatch = useDispatch()
@@ -22,9 +22,9 @@ const Checkout = () => {
     return(
         <PageLayout backButton={{text: 'Back', link: `/content/${id}`}} pageName="Review and Confirmation" large>
             <Breadcrumb />
-            <CheckoutWrapper {...product} pageName="Checkout"/>
+            <ReceiptWrapper {...product} pageName="Review and Confirmation"/>
         </PageLayout>
     )
 }
 
-export default Checkout;
+export default Receipt;

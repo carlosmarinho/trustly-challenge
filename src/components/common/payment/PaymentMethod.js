@@ -119,7 +119,7 @@ export const PaymentMethod = (props) => {
             amount: price,
             description: `${description} - email: carluizfla@hotmail.com`,
             merchantReference: uid,
-            returnUrl: '#success',
+            returnUrl: '/receipt/success',
             cancelUrl: '#cancel'
         }
         
